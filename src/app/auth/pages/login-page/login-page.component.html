@@ -1,71 +1,72 @@
-<section class="flex flex-col justify-center items-center mt-15 md:mt-30">
-  <div class="bg-accent rounded-lg px-10 py-5">
+<section class="flex flex-col justify-center items-center mt-2">
+  <div
+    class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-10 py-5"
+  >
     <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="login()">
-      <h1 class="font-extrabold text-3xl text-center mb-5 text-black">
-        Iniciar Sesión
-      </h1>
-      <div class="flex flex-col gap-3">
-        <div>
-          <p class="text-[13px] font-semibold text-black mb-1">
-            Correo electrónico
-          </p>
+      <div class="flex items-center gap-2 justify-center">
+        <lucide-icon
+          [img]="user"
+          class="text-buttons"
+          strokeWidth="3"
+        ></lucide-icon>
+        <h1 class="font-bold text-2xl text-center text-white">
+          Iniciar Sesión
+        </h1>
+      </div>
 
-          <div class="relative">
-            <i
-              class="pi pi-envelope absolute left-3 top-[3px] translate-y-1/2 text-gray-500 text-sm"
-            ></i>
+      <p class="text-white/60 text-sm mt-2 mb-6">
+        Ingresa tus credenciales para acceder a tu cuenta
+      </p>
+      <form class="flex flex-col gap-6">
+        <div>
+          <p class="text-[13px] font-semibold text-white mb-1">Email</p>
+          <div class="relative flex items-center">
+            <lucide-icon
+              [img]="mail"
+              class="absolute top-1/2 -translate-y-1/2 pl-1"
+              size="20"
+            ></lucide-icon>
             <input
               type="text"
               formControlName="email"
               placeholder="Correo electrónico"
-              class="pl-10 text-black text-xs bg-amber-50 rounded p-2 w-full placeholder:text-xs placeholder:text-gray-500 outline-2 outline-gray-500 hover:ring-[2.5px] hover:ring-black hover:outline-none focus:ring-[2.5px] focus:ring-black focus:outline-none"
+              class="pl-10 text-white text-sm bg-white/30 rounded p-2 w-full placeholder:text-md placeholder:text-white/40 outline-2 outline-gray-500 focus:ring-[1px] focus:ring-white focus:outline-none"
             />
           </div>
         </div>
         <div>
-          <p class="text-[13px] text-black font-semibold mb-1">Contraseña</p>
+          <p class="text-[13px] text-white font-semibold mb-1">Contraseña</p>
 
           <div class="relative">
-            <i
-              class="absolute pi pi-lock left-3 top-[3px] translate-y-1/2 text-gray-500 text-sm"
-            ></i>
+            <lucide-icon
+              [img]="lock"
+              class="absolute top-1/2 -translate-y-1/2 pl-1"
+              size="20"
+            ></lucide-icon>
 
             <input
               type="password"
               formControlName="password"
               placeholder="Contraseña"
-              class="pl-10 text-black text-xs bg-amber-50 rounded p-2 w-full placeholder:text-xs placeholder:text-gray-500 outline-2 outline-gray-500 hover:ring-[2.5px] hover:ring-black hover:outline-none focus:ring-[2.5px] focus:ring-black focus:outline-none"
+              class="pl-10 text-white text-sm bg-white/30 rounded p-2 w-full placeholder:text-md placeholder:text-white/40 outline-2 outline-gray-500 focus:ring-[1px] focus:ring-white focus:outline-none"
             />
           </div>
         </div>
 
-        <p
-          class="text-xs self-end underline cursor-pointer text-black font-normal hover:text-amber-50"
-        >
-          ¿Olvidaste tu contraseña?
-        </p>
-
         <button
-          class="disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:ring-0 transition-all duration-200 mt-2 rounded-lg bg-black shadow-xl text-amber-50 text-xs self-center p-3 font-semibold cursor-pointer hover:ring-[2.1px] hover:ring-amber-50"
+          class="disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 active:scale-95 mt-2 rounded-lg bg-buttons shadow-xl text-amber-50 text-sm p-2 font-semibold cursor-pointer hover:ring-[2.1px] hover:ring-buttons/40"
           type="submit"
           [disabled]="myForm.invalid"
-          [ngClass]="myForm.invalid ? [] : []"
         >
           Iniciar Sesión
         </button>
 
-        <div class="md:flex mt-2">
-          <p class="text-xs text-black font-semibold">
-            ¿Aún no tienes una cuenta en VetCare?
-          </p>
-          <p
-            routerLink="/register"
-            class="text-center mt-1 md:mt-0 hover:text-amber-50 ml-1 underline text-xs text-black font-semibold cursor-pointer"
-          >
-            Crea tu cuenta
-          </p>
-        </div>
-      </div>
+        <p
+          class="text-sm text-center text-white/70 font-semibold hover:underline hover:cursor-pointer"
+        >
+          ¿Olvidaste tu contraseña?
+        </p>
+      </form>
     </form>
   </div>
 </section>

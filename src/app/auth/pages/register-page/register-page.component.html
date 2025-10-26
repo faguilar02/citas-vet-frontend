@@ -1,87 +1,85 @@
-<section class="flex flex-col justify-center items-center mt-15 md:mt-30">
-  <div class="bg-accent rounded-lg px-10 py-5">
-    <form action="">
-      <h1 class="font-extrabold text-3xl text-center mb-5 text-black">
-        Crear Cuenta
-      </h1>
-      <div class="flex flex-col gap-3">
+<section class="flex flex-col justify-center items-center mt-2">
+  <div
+    class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-10 py-5 w-96"
+  >
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="login()">
+      <div class="flex items-center gap-2 justify-center">
+        <lucide-icon
+          [img]="heart"
+          class="text-buttons"
+          strokeWidth="3"
+          size="18"
+        ></lucide-icon>
+        <h1 class="font-bold text-2xl text-center text-white mt-[-3px]">
+          Crear cuenta
+        </h1>
+      </div>
+
+      <p class="text-white/60 text-sm mt-1 mb-6">
+        Únete a VetCara para cuidar mejor a tu mascota
+      </p>
+      <form class="flex flex-col gap-6">
         <div>
-          <p class="text-[13px] font-semibold text-black mb-1">
+          <p class="text-[13px] font-semibold text-white mb-1">
             Nombre Completo
           </p>
-
-          <div class="relative">
-            <i
-              class="pi pi-user absolute left-3 top-[3px] translate-y-1/2 text-gray-500 text-sm"
-            ></i>
+          <div class="relative flex items-center">
+            <lucide-icon
+              [img]="user"
+              class="absolute top-1/2 -translate-y-1/2 pl-1"
+              size="20"
+            ></lucide-icon>
             <input
               type="text"
-              name=""
-              id=""
-              placeholder="Nombre Completo"
-              class="pl-10 text-black text-xs bg-amber-50 rounded p-2 w-full placeholder:text-xs placeholder:text-gray-500 outline-2 outline-gray-500 hover:ring-[2.5px] hover:ring-black hover:outline-none focus:ring-[2.5px] focus:ring-black focus:outline-none"
+              formControlName="email"
+              placeholder="Tu nombre completo"
+              class="pl-10 text-white text-sm bg-white/30 rounded p-2 w-full placeholder:text-md placeholder:text-white/40 outline-2 outline-gray-500 focus:ring-[1px] focus:ring-white focus:outline-none"
             />
           </div>
         </div>
-
         <div>
-          <p class="text-[13px] font-semibold text-black mb-1">
-            Correo electrónico
-          </p>
-
-          <div class="relative">
-            <i
-              class="pi pi-envelope absolute left-3 top-[3px] translate-y-1/2 text-gray-500 text-sm"
-            ></i>
+          <p class="text-[13px] font-semibold text-white mb-1">Email</p>
+          <div class="relative flex items-center">
+            <lucide-icon
+              [img]="mail"
+              class="absolute top-1/2 -translate-y-1/2 pl-1"
+              size="20"
+            ></lucide-icon>
             <input
-              type="email"
-              name=""
-              id=""
+              type="text"
+              formControlName="email"
               placeholder="Correo electrónico"
-              class="pl-10 text-black text-xs bg-amber-50 rounded p-2 w-full placeholder:text-xs placeholder:text-gray-500 outline-2 outline-gray-500 hover:ring-[2.5px] hover:ring-black hover:outline-none focus:ring-[2.5px] focus:ring-black focus:outline-none"
+              class="pl-10 text-white text-sm bg-white/30 rounded p-2 w-full placeholder:text-md placeholder:text-white/40 outline-2 outline-gray-500 focus:ring-[1px] focus:ring-white focus:outline-none"
             />
           </div>
         </div>
         <div>
-          <p class="text-[13px] text-black font-semibold mb-1">Contraseña</p>
+          <p class="text-[13px] text-white font-semibold mb-1">Contraseña</p>
 
           <div class="relative">
-            <i
-              class="absolute pi pi-lock left-3 top-[3px] translate-y-1/2 text-gray-500 text-sm"
-            ></i>
+            <lucide-icon
+              [img]="lock"
+              class="absolute top-1/2 -translate-y-1/2 pl-1"
+              size="20"
+            ></lucide-icon>
 
             <input
               type="password"
-              name=""
-              id=""
+              formControlName="password"
               placeholder="Contraseña"
-              class="pl-10 text-black text-xs bg-amber-50 rounded p-2 w-full placeholder:text-xs placeholder:text-gray-500 outline-2 outline-gray-500 hover:ring-[2.5px] hover:ring-black hover:outline-none focus:ring-[2.5px] focus:ring-black focus:outline-none"
+              class="pl-10 text-white text-sm bg-white/30 rounded p-2 w-full placeholder:text-md placeholder:text-white/40 outline-2 outline-gray-500 focus:ring-[1px] focus:ring-white focus:outline-none"
             />
           </div>
         </div>
 
-        <label class="text-xs text-black font-medium">
-          <input type="checkbox" checked style="accent-color: black;"/>
-          Acepto los términos y condiciones
-        </label>
         <button
-          class="disabled:bg-gray-400 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:ring-0 transition-all duration-200 mt-2 rounded-lg bg-black shadow-xl text-amber-50 text-xs self-center p-3 font-semibold cursor-pointer hover:ring-[2.1px] hover:ring-amber-50"
+          class="disabled:cursor-not-allowed transition-all duration-200 hover:scale-105 active:scale-95 mt-2 rounded-lg bg-buttons shadow-xl text-amber-50 text-sm p-2 font-semibold cursor-pointer hover:ring-[2.1px] hover:ring-buttons/40"
+          type="submit"
+          [disabled]="myForm.invalid"
         >
-          Registrarse
+          Crear Cuenta
         </button>
-
-        <div class="md:flex mt-2">
-          <p class="text-xs text-black font-semibold text-center">
-            ¿Ya tienes una cuenta?
-          </p>
-          <p
-            routerLink="/login"
-            class="text-center mt-1 md:mt-0 hover:text-amber-50 ml-1 underline text-xs text-black font-semibold cursor-pointer"
-          >
-            Iniciar sesión
-          </p>
-        </div>
-      </div>
+      </form>
     </form>
   </div>
 </section>

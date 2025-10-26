@@ -1,0 +1,35 @@
+<div class="flex flex-col justify-center items-center mt-30 min-w-screen">
+  <div class="flex">
+    <img src="assets/images/1f436.png" alt="" class="w-12 h-12" />
+    <div class="ml-2">
+      <h1 class="text-white font-bold text-3xl">VetCare</h1>
+      <p class="text-white/40 font-semibold text-sm">Cuidado profesional</p>
+    </div>
+  </div>
+
+  <h1 class="text-white font-bold text-3xl mt-5">Bienvenido de vuelta</h1>
+  <p class="text-white/50 font-semibold text-md mt-2">
+    Accede a tu cuenta para cuidar mejor a tus mascotas
+  </p>
+
+  <div
+    class="grid grid-cols-2 flex-1 border-white/30 border-1 bg-white/20 w-96 rounded-sm mt-4"
+  >
+    @for (button of buttons; track $index) {
+
+    <button
+      [ngClass]="
+        activeButton() === button.value
+          ? 'bg-orange-500 text-white'
+          : 'hover:bg-white/10 text-white/80'
+      "
+      class="text-[14px] font-semibold rounded-md py-1.5 my-1 mx-0.5 cursor-pointer active:scale-95 transition-colors duration-200"
+      [routerLink]="button.route"
+      (click)="setButtonValue(button.value)"
+    >
+      {{ button.value }}
+    </button>
+    }
+  </div>
+</div>
+<router-outlet />

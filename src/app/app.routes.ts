@@ -12,16 +12,9 @@ export const routes: Routes = [
       },
 
       {
-        path: 'login',
-        loadComponent: () =>
-          import('./auth/pages/login-page/login-page.component'),
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.routes'),
       },
-      {
-        path: 'register',
-        loadComponent: () =>
-          import('./auth/pages/register-page/register-page.component'),
-      },
-     
 
       {
         path: '**',
