@@ -1,11 +1,24 @@
 import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
+import {
+  RouterOutlet,
+  RouterLink,
+  Router,
+  NavigationEnd,
+} from '@angular/router';
+import { filter } from 'rxjs';
 
 interface ButtonsValue {
   value: string;
   route: string;
 }
+
 @Component({
   selector: 'app-layout-page',
   standalone: true,
@@ -14,7 +27,7 @@ interface ButtonsValue {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutPage {
-  activeButton = signal<string>('Iniciar Sesión');
+  router = inject(Router);
 
   buttons: ButtonsValue[] = [
     {
@@ -26,6 +39,30 @@ export class LayoutPage {
       route: '/auth/register',
     },
   ];
+
+  activeButton = signal<string>('Iniciar Sesión');
+
+  constructor() {
+    this.updateActiveButton(this.router.url);
+
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
+      )
+      .subscribe((event) => {
+        this.updateActiveButton(event.urlAfterRedirects);
+      });
+  }
+
+  private updateActiveButton(url: string): void {
+    if (url.includes('/auth/login')) {
+      this.activeButton.set('Iniciar Sesión');
+    } else if (url.includes('/auth/register')) {
+      this.activeButton.set('Registrarse');
+    }
+  }
 
   setButtonValue(value: string) {
     this.activeButton.set(value);
